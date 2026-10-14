@@ -34,14 +34,14 @@ void main() {
     expect(find.text('Masuk ke SIMAUL'), findsOneWidget);
     expect(find.text('Masuk Sekarang'), findsOneWidget);
     // Form email awal harus kosong (tidak otomatis isi akun)
-    expect(find.text('customer@example.com'), findsNothing);
+    expect(find.text('pelanggan@simaul.com'), findsNothing);
   });
 
   testWidgets('Test 3: Cold start dalam keadaan login customer -> Langsung ke Dashboard Pelanggan', (WidgetTester tester) async {
     final customer = UserModel(
       id: 1,
       name: 'Rian Saputra',
-      email: 'customer@example.com',
+      email: 'pelanggan@simaul.com',
       role: 'customer',
       points: 150,
     );
@@ -66,7 +66,7 @@ void main() {
     final customer = UserModel(
       id: 1,
       name: 'Rian Saputra',
-      email: 'customer@example.com',
+      email: 'pelanggan@simaul.com',
       role: 'customer',
       points: 150,
     );

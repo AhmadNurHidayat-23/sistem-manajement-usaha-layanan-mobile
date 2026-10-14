@@ -26,7 +26,7 @@ class DemoAccountSelector extends StatelessWidget {
             OutlinedButton.icon(
               icon: const Icon(Icons.person_outline, size: 16),
               label: const Text('Pelanggan', style: TextStyle(fontSize: 12)),
-              onPressed: () => onSelect('customer@example.com', 'password123'),
+              onPressed: () => onSelect('pelanggan@simaul.com', 'password123'),
               style: OutlinedButton.styleFrom(
                 side: const BorderSide(color: AppColors.border),
                 foregroundColor: AppColors.primaryNavy,
