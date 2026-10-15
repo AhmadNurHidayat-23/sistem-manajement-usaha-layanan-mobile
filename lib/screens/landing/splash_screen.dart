@@ -13,17 +13,24 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  bool _hasNavigated = false;
+
   @override
   void initState() {
     super.initState();
-    _checkSession();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        _checkSession();
+      }
+    });
   }
 
   Future<void> _checkSession() async {
-    // Tampilkan splash selama sekitar 1.8 detik sambil memeriksa sesi
+    // Tampilkan splash selama sekitar 1.8 detik setelah frame pertama selesai ditampilkan
     await Future.delayed(const Duration(milliseconds: 1800));
 
-    if (!mounted) return;
+    if (!mounted || _hasNavigated) return;
+    _hasNavigated = true;
 
     if (SessionManager.hasToken()) {
       final role = SessionManager.getRole();

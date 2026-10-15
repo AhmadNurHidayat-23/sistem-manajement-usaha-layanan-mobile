@@ -86,4 +86,38 @@ void main() {
     expect(find.text('Layanan Perawatan & Servis Terpadu'), findsOneWidget);
     expect(find.text('Masuk ke Akun'), findsOneWidget);
   });
+
+  testWidgets('Test 5: Splash Screen bertahan sekitar 1.8 detik sebelum navigasi ke Dashboard Karyawan', (WidgetTester tester) async {
+    final employee = UserModel(
+      id: 2,
+      name: 'Budi Santoso',
+      email: 'karyawan@simaul.com',
+      role: 'employee',
+      employeeId: 10,
+    );
+
+    SharedPreferences.setMockInitialValues({
+      'auth_token': 'emp_token_test',
+      'auth_user': jsonEncode(employee.toJson()),
+    });
+    await SessionManager.init();
+
+    await tester.pumpWidget(const SimaulMobileApp());
+    // Frame pertama: Splash screen tampil
+    expect(find.text('SIMAUL'), findsOneWidget);
+    expect(find.text('Service Management Application'), findsOneWidget);
+    expect(find.text('SIMAUL Petugas'), findsNothing);
+
+    // Di detik ke-1.0 (sebelum 1.8 detik), Splash screen MASIH harus tampil
+    await tester.pump(const Duration(milliseconds: 1000));
+    expect(find.text('SIMAUL'), findsOneWidget);
+    expect(find.text('SIMAUL Petugas'), findsNothing);
+
+    // Setelah melewati 1.8 detik (tambah 1000ms lagi -> 2000ms total)
+    await tester.pump(const Duration(milliseconds: 1000));
+    await tester.pumpAndSettle();
+
+    // Sekarang telah berpindah ke Dashboard Karyawan
+    expect(find.text('SIMAUL Petugas'), findsOneWidget);
+  });
 }
