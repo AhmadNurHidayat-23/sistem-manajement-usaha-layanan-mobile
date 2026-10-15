@@ -1,11 +1,11 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simaul_mobile/core/theme/app_theme.dart';
 import 'package:simaul_mobile/core/utils/session_manager.dart';
-import 'package:simaul_mobile/screens/pelanggan/buat_booking_screen.dart';
-import 'package:simaul_mobile/screens/pelanggan/buat_pesanan_screen.dart';
-import 'package:simaul_mobile/screens/pelanggan/widgets/booking_promo_selector.dart';
+import 'package:simaul_mobile/screens/pelanggan/booking/buat_booking_screen.dart';
+import 'package:simaul_mobile/screens/pelanggan/pesanan/buat_pesanan_screen.dart';
+import 'package:simaul_mobile/screens/pelanggan/booking/widgets/booking_promo_selector.dart';
 
 void main() {
   setUp(() async {

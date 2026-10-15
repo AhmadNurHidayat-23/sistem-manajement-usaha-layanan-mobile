@@ -1,7 +1,7 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'core/theme/app_theme.dart';
 import 'core/utils/session_manager.dart';
-import 'screens/splash_screen.dart';
+import 'screens/landing/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
